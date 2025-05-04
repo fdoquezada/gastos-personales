@@ -16,14 +16,21 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-
 from django.contrib.auth import views as auth_views
+from django.conf.urls import handler404, handler500
+
+from errors.views import handler404 as custom_handler404
+from errors.views import handler500 as custom_handler500
+from errors.views import logout_view
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('home.urls')),
     path('finanzas/', include('finanzas.urls')),
     path('auth/', include('atentication.urls')),
+    path('logout/', logout_view, name='logout'),
 ]
 
-
+# Manejo de errores
+handler404 = custom_handler404
+handler500 = custom_handler500

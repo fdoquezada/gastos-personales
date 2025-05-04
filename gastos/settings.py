@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'home',
     'finanzas',
     'atentication',
+    'errors',
 ]
 
 MIDDLEWARE = [

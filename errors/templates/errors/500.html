@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    <title>Error del Servidor - Gastos del Hogar</title>
+{% endblock %}
+
+{% block content %}
+<div class="error-container">
+    <div class="error-content">
+        <h1 class="error-title">500</h1>
+        <h2 class="error-message">Error del Servidor</h2>
+        <p class="error-description">Lo siento, ha ocurrido un error en el servidor. Nuestro equipo técnico ya ha sido notificado.</p>
+        <a href="{% url 'finanzas:dashboard' %}" class="btn btn-primary btn-lg">Volver al Dashboard</a>
+    </div>
+</div>
+{% endblock %}

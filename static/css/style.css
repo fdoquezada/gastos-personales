@@ -30,12 +30,70 @@
 }
 
 .social-links a {
-    color: #6c757d;
     font-size: 1.5rem;
     margin-right: 1rem;
     text-decoration: none;
+    transition: all 0.3s ease;
 }
 
 .social-links a:hover {
-    color: #0d6efd;
+    transform: scale(1.2);
+}
+
+/* Colores específicos para cada red social */
+.social-links a[href*="facebook"] i {
+    color: #1877F2 !important;
+}
+
+.social-links a[href*="twitter"] i {
+    color: #1DA1F2 !important;
+}
+
+.social-links a[href*="instagram"] i {
+    color: #E1306C !important;
+}
+
+.social-links a[href*="linkedin"] i {
+    color: #0A66C2 !important;
+}
+
+.social-links a[href*="github"] i {
+    color: #181717 !important;
+}
+
+.social-links a:hover i {
+    color: #000 !important;
+}
+
+/* Estilos para páginas de error */
+.error-container {
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+}
+
+.error-content {
+    text-align: center;
+    max-width: 600px;
+}
+
+.error-title {
+    font-size: 8rem;
+    font-weight: bold;
+    color: #6c757d;
+    margin-bottom: 1rem;
+}
+
+.error-message {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 1.5rem;
+}
+
+.error-description {
+    font-size: 1.1rem;
+    color: #6c757d;
+    margin-bottom: 2rem;
 }

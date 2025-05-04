@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    <title>Página no encontrada - Gastos del Hogar</title>
+{% endblock %}
+
+{% block content %}
+<div class="error-container">
+    <div class="error-content">
+        <h1 class="error-title">404</h1>
+        <h2 class="error-message">Página no encontrada</h2>
+        <p class="error-description">Lo siento, la página que estás buscando no existe.</p>
+        <a href="{% url 'finanzas:dashboard' %}" class="btn btn-primary btn-lg">Volver al Dashboard</a>
+    </div>
+</div>
+{% endblock %}

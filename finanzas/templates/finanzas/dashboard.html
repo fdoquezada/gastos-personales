@@ -1,0 +1,112 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+{% endblock %}
+
+{% block title %}
+    <title>Dashboard - Gastos del Hogar</title>
+    <link rel="icon" href="{% static 'img/dashboard-icon.png' %}" />
+{% endblock %}
+
+{% block content %}
+<div class="dashboard-container">
+    <div class="dashboard-header">
+        <h1>Dashboard de Gastos de {{ mes_actual|date:"F Y" }}</h1>
+        <div class="dashboard-actions">
+            <a href="{% url 'finanzas:agregar_transaccion' %}" class="btn btn-primary">Agregar Transacción</a>
+        </div>
+    </div>
+
+    <div class="dashboard-summary">
+        <div class="summary-card">
+            <h3>Saldo Anterior</h3>
+            <div class="amount saldo-positivo">${{ saldo_anterior|floatformat:2 }}</div>
+        </div>
+        <div class="summary-card">
+            <h3>Entradas</h3>
+            <div class="amount entrada">${{ entradas|floatformat:2 }}</div>
+        </div>
+        <div class="summary-card">
+            <h3>Salidas</h3>
+            <div class="amount salida">${{ salidas|floatformat:2 }}</div>
+        </div>
+        <div class="summary-card">
+            <h3>Saldo Actual</h3>
+            <div class="amount saldo-positivo">${{ saldo_actual|floatformat:2 }}</div>
+        </div>
+        <div class="summary-card">
+            <h3>Saldo Total</h3>
+            <div class="amount saldo-positivo">${{ saldo_total|floatformat:2 }}</div>
+        </div>
+    </div>
+
+<h2>Transacciones</h2>
+<table>
+    <thead>
+        <tr>
+            <th>Fecha</th>
+            <th>Descripción</th>
+            <th>Tipo</th>
+            <th>Monto</th>
+            <th>Saldo Acumulado</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for transaccion in transacciones %}
+        <tr>
+            <td>{{ transaccion.fecha }}</td>
+            <td>{{ transaccion.descripcion }}</td>
+            <td class="{{ transaccion.tipo }}">{{ transaccion.get_tipo_display }}</td>
+            <td>${{ transaccion.monto|floatformat:2 }}</td>
+            <td class="{% if transaccion.saldo_acumulado >= 0 %}saldo-positivo{% else %}saldo-negativo{% endif %}">${{ transaccion.saldo_acumulado|floatformat:2 }}</td>
+            <td class="acciones">
+                <a href="{% url 'finanzas:editar_transaccion' transaccion.id %}">Editar</a>
+                <a href="{% url 'finanzas:eliminar_transaccion' transaccion.id %}">Eliminar</a>
+            </td>
+        </tr>
+        {% empty %}
+        <tr><td colspan="6">No hay transacciones registradas para este mes.</td></tr>
+        {% endfor %}
+    </tbody>
+</table>
+<style>
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+    th, td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: left;
+    }
+    th {
+        background-color: #f2f2f2;
+    }
+    .entrada {
+        color: green;
+    }
+    .salida {
+        color: red;
+    }
+    .saldo-positivo {
+        color: green;
+        font-weight: bold;
+    }
+    .saldo-negativo {
+        color: red;
+        font-weight: bold;
+    }
+    .saldo-total {
+        font-size: 1.2em;
+        font-weight: bold;
+        margin-top: 15px;
+    }
+    .acciones a {
+        margin-right: 5px;
+        text-decoration: none;
+    }
+</style>
+{% endblock %}

@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/auth.css' %}">
+{% endblock %}
+
+{% block title %}
+    <title>Registro - Gastos del Hogar</title>
+    <link rel="icon" href="{% static 'img/register-icon.png' %}" />
+{% endblock %}
+
+{% block content %}
+    <div class="auth-container">
+        <h2 class="auth-title">Crear Cuenta</h2>
+        
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-{{ message.tags }} auth-alert">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+
+        <form method="post" class="auth-form">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="id_username">Nombre de usuario</label>
+                <input type="text" name="username" id="id_username" required>
+                <span class="help-text">Máximo 150 caracteres. Solo letras, números y @/./+/-/_</span>
+            </div>
+            
+            <div class="form-group">
+                <label for="id_password1">Contraseña</label>
+                <input type="password" name="password1" id="id_password1" required>
+                <span class="help-text">Mínimo 8 caracteres. No debe ser completamente numérica.</span>
+            </div>
+            
+            <div class="form-group">
+                <label for="id_password2">Confirmar contraseña</label>
+                <input type="password" name="password2" id="id_password2" required>
+            </div>
+
+            {% if form.errors %}
+                <div class="alert alert-error">
+                    {% for field, errors in form.errors.items %}
+                        {% for error in errors %}
+                            <p>{{ error }}</p>
+                        {% endfor %}
+                    {% endfor %}
+                </div>
+            {% endif %}
+
+            <button type="submit" class="btn btn-primary auth-button">Registrarse</button>
+        </form>
+        
+        <div class="auth-links">
+            <p>¿Ya tienes cuenta? <a href="{% url 'login' %}">Iniciar Sesión</a></p>
+        </div>
+    </div>
+</div>
+{% endblock %}

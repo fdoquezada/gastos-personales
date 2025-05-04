@@ -1,0 +1,99 @@
+.transacciones-container {
+    max-width: 600px;
+    margin: 1.5rem auto;
+    padding: 1.5rem;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.transacciones-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.transacciones-header h1 {
+    color: #21e6aa;
+    font-size: 1.75rem;
+    margin-bottom: 0.5rem;
+}
+
+.transacciones-header p {
+    color: #666;
+    font-size: 1rem;
+}
+
+.transacciones-form {
+    display: grid;
+    gap: 1rem;
+}
+
+.transacciones-form .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+}
+
+.transacciones-form label {
+    font-weight: 500;
+    color: #333;
+}
+
+.transacciones-form input,
+.transacciones-form select,
+.transacciones-form textarea {
+    padding: 0.5rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 0.95rem;
+    transition: border-color 0.3s ease;
+}
+
+.transacciones-form input:focus,
+.transacciones-form select:focus,
+.transacciones-form textarea:focus {
+    border-color: #21e6aa;
+    outline: none;
+    box-shadow: 0 0 0 0.2rem rgba(33, 230, 170, 0.25);
+}
+
+.transacciones-form .form-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+}
+
+.transacciones-buttons {
+    display: flex;
+    justify-content: space-between;
+    gap: 0.75rem;
+    margin-top: 1.5rem;
+}
+
+.transacciones-buttons .btn {
+    padding: 0.5rem 1.25rem;
+    font-weight: 500;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.transacciones-buttons .btn-primary {
+    background-color: #21e6aa;
+    border-color: #21e6aa;
+}
+
+.transacciones-buttons .btn-primary:hover {
+    background-color: #18c08d;
+    border-color: #18c08d;
+}
+
+.transacciones-buttons .btn-secondary {
+    background-color: #f8f9fa;
+    color: #333;
+    border-color: #dee2e6;
+}
+
+.transacciones-buttons .btn-secondary:hover {
+    background-color: #e9ecef;
+    color: #212529;
+}

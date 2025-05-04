@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/logout.css' %}">
+{% endblock %}
+
+{% block title %}
+    <title>Cerrar Sesión - Gastos del Hogar</title>
+    <link rel="icon" href="{% static 'img/logout-icon.png' %}" />
+{% endblock %}
+
+{% block content %}
+    <div class="logout-container">
+        <div class="logout-content">
+            <div class="logout-icon">
+                <i class="fas fa-sign-out-alt"></i>
+            </div>
+            <h2>¡Hasta pronto!</h2>
+            <p>Gracias por usar Gastos del Hogar</p>
+            <div class="logout-buttons">
+                <a href="{% url 'login' %}" class="btn btn-primary">Iniciar Sesión</a>
+                <a href="{% url 'register' %}" class="btn btn-outline-primary">Crear Cuenta</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}

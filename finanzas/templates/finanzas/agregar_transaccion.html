@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/transacciones.css' %}">
+{% endblock %}
+
+{% block title %}
+    <title>Agregar Transacción - Gastos del Hogar</title>
+    <link rel="icon" href="{% static 'img/agregar-icon.png' %}" />
+{% endblock %}
+
+{% block content %}
+    <div class="transacciones-container">
+        <div class="transacciones-header">
+            <h1>Agregar Nueva Transacción</h1>
+            <p>Registra tus gastos y ingresos para mantener un control de tus finanzas</p>
+        </div>
+        
+        <form method="post" class="transacciones-form">
+            {% csrf_token %}
+            <div class="form-row">
+                {{ form.tipo.label_tag }}
+                {{ form.tipo }}
+            </div>
+            
+            <div class="form-row">
+                {{ form.categoria.label_tag }}
+                {{ form.categoria }}
+            </div>
+            
+            <div class="form-row">
+                {{ form.fecha.label_tag }}
+                {{ form.fecha }}
+            </div>
+            
+            <div class="form-row">
+                {{ form.monto.label_tag }}
+                {{ form.monto }}
+            </div>
+            
+            <div class="form-group">
+                {{ form.descripcion.label_tag }}
+                {{ form.descripcion }}
+            </div>
+            
+            <div class="transacciones-buttons">
+                <button type="submit" class="btn btn-primary">Guardar</button>
+                <a href="{% url 'finanzas:dashboard' %}" class="btn btn-secondary">Cancelar</a>
+            </div>
+        </form>
+    </div>
+
+
+{% endblock %}

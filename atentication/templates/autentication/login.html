@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/auth.css' %}">
+{% endblock %}
+
+{% block title %}
+    <title>Iniciar Sesión - Gastos del Hogar</title>
+    <link rel="icon" href="{% static 'img/login-icon.png' %}" />
+{% endblock %}
+
+{% block content %}
+    <div class="auth-container" style="background-image: url('{% static 'img/login-bg.jpg' %}'); background-size: cover; background-position: center; padding: 40px;">
+        <h2 class="auth-title">Iniciar Sesión</h2>
+        
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-{{ message.tags }} auth-alert">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+
+        <form method="post" class="auth-form" novalidate>
+            {% csrf_token %}
+            {% for field in form %}
+                <div class="form-group">
+                    {{ field.label_tag }}
+                    {{ field }}
+                    {% if field.errors %}
+                        <div class="alert alert-danger auth-alert">
+                            {{ field.errors }}
+                        </div>
+                    {% endif %}
+                </div>
+            {% endfor %}
+            <button type="submit" class="btn btn-primary auth-button">Iniciar Sesión</button>
+        </form>
+        
+        <div class="auth-links">
+            <p>¿No tienes cuenta? <a href="{% url 'register' %}">Regístrate aquí</a></p>
+            <p>¿Olvidaste tu contraseña? <a href="{% url 'password_reset' %}">Recuperar contraseña</a></p>
+        </div>
+    </div>
+{% endblock %}

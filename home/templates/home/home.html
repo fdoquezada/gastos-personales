@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="hero-section" style="background-image: url('{% static 'img/fondo.jpg' %}')">
+        <div class="hero-content">
+            <h1 class="display-4">Bienvenido a Gastos del Hogar</h1>
+            <p class="lead">Administra tus finanzas de manera sencilla y eficiente</p>
+            <a href="{% url 'finanzas:dashboard' %}" class="btn btn-primary btn-lg">Ir al Dashboard</a>
+        </div>
+    </div>
+{% endblock %}

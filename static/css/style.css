@@ -1,0 +1,41 @@
+.entrada { color: green; }
+.salida { color: red; }
+.saldo-positivo { color: green; font-weight: bold; }
+.saldo-negativo { color: red; font-weight: bold; }
+.saldo-total { font-size: 1.2em; font-weight: bold; margin-top: 15px; }
+.acciones a { margin-right: 5px; text-decoration: none; }
+
+/* Estilos para el footer */
+.footer {
+    background-color: #f8f9fa;
+    padding: 2rem 0;
+}
+
+.footer-links {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-links li {
+    margin-bottom: 0.5rem;
+}
+
+.footer-links a {
+    color: #6c757d;
+    text-decoration: none;
+}
+
+.footer-links a:hover {
+    color: #0d6efd;
+}
+
+.social-links a {
+    color: #6c757d;
+    font-size: 1.5rem;
+    margin-right: 1rem;
+    text-decoration: none;
+}
+
+.social-links a:hover {
+    color: #0d6efd;
+}

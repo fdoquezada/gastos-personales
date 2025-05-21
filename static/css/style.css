@@ -7,8 +7,11 @@
 
 /* Estilos para el footer */
 .footer {
-    background-color: #f8f9fa;
+    background-color: #bfd7ee;
     padding: 2rem 0;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    min-height: 30vh;
 }
 
 .footer-links {
@@ -34,6 +37,134 @@
     margin-right: 1rem;
     text-decoration: none;
     transition: all 0.3s ease;
+}
+
+/* Estilos para las páginas de error */
+.error-page {
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.error-page h1 {
+    font-size: 8rem;
+    color: #0d6efd;
+    margin-bottom: 1rem;
+}
+
+.error-page p {
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+}
+
+.error-page .btn {
+    padding: 0.75rem 2rem;
+    font-size: 1.1rem;
+}
+
+[data-theme="dark"] .error-page {
+    background: rgba(0, 0, 0, 0.8);
+    color: #ffffff;
+}
+
+[data-theme="dark"] .error-page h1 {
+    color: #0d6efd;
+}
+
+[data-theme="dark"] .error-page .btn {
+    background-color: #0d6efd;
+    border-color: #0d6efd;
+}
+
+[data-theme="dark"] .error-page .btn:hover {
+    background-color: #0b5ed7;
+    border-color: #0a58ca;
+}
+
+/* Estilos para el tema oscuro */
+[data-theme="dark"] {
+    background-color: #1a1a1a;
+    color: #ffffff;
+}
+
+[data-theme="dark"] .navbar {
+    background-color: #1a1a1a !important;
+    color: #ffffff;
+}
+
+[data-theme="dark"] .navbar-brand,
+[data-theme="dark"] .nav-link,
+[data-theme="dark"] .text-dark {
+    color: #ffffff !important;
+}
+
+[data-theme="dark"] .dashboard-container,
+[data-theme="dark"] .card,
+[data-theme="dark"] .table {
+    background-color: #2d2d2d;
+    color: #ffffff;
+    border-color: #444444;
+}
+
+[data-theme="dark"] .btn-primary {
+    background-color: #0d6efd;
+    border-color: #0d6efd;
+}
+
+[data-theme="dark"] .btn-primary:hover {
+    background-color: #0b5ed7;
+    border-color: #0a58ca;
+}
+
+[data-theme="dark"] .footer {
+    background-color: #2d2d2d;
+    color: #ffffff;
+}
+
+[data-theme="dark"] .footer-links a,
+[data-theme="dark"] .social-links a {
+    color: #ffffff;
+}
+
+[data-theme="dark"] .footer-links a:hover,
+[data-theme="dark"] .social-links a:hover {
+    color: #0d6efd;
+}
+
+[data-theme="dark"] .theme-toggle button {
+    color: #ffffff;
+}
+
+[data-theme="dark"] .theme-toggle button i {
+    color: #ffd700;
+}
+
+.theme-toggle {
+    margin-left: 1rem;
+}
+
+.theme-toggle button {
+    padding: 0.5rem;
+    border: none;
+    background: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: #0d6efd;
+    font-size: 1.2rem;
+}
+
+.theme-toggle button:hover {
+    color: #0b5ed7;
+}
+
+.theme-toggle button i {
+    transition: transform 0.3s ease;
+}
+
+.theme-toggle button.active i {
+    transform: rotate(180deg);
+    color: #ffd700;
 }
 
 .social-links a:hover {

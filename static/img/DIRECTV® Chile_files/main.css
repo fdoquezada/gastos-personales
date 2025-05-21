@@ -1,0 +1,1570 @@
+﻿@charset "UTF-8";
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline; }
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block; }
+
+body {
+  line-height: 1; }
+
+ol, ul {
+  list-style: none; }
+
+blockquote, q {
+  quotes: none; }
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none; }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+* {
+  box-sizing: border-box; }
+
+.button, .content .box-buttons a, .prepago .step#step2 .next, .instalacion .step#step2 .next, .mensualidad .step#step2 .next {
+  background: #faa218;
+  background: -moz-linear-gradient(top, #faa218 0%, #fe7403 100%);
+  /* FF3.6-15 */
+  background: -webkit-linear-gradient(top, #faa218 0%, #fe7403 100%);
+  /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to bottom, #faa218 0%, #fe7403 100%);
+  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  border-radius: 5px;
+  color: #000;
+  font-size: 18px;
+  font-family: 'DTV-DIN-MEDIUM';
+  padding: 10px 30px;
+  text-decoration: none; }
+
+@font-face {
+  font-family: 'social';
+  src: url("../font/social.eot?47898504");
+  src: url("../font/social.eot?47898504#iefix") format("embedded-opentype"), url("../font/social.woff2?47898504") format("woff2"), url("../font/social.woff?47898504") format("woff"), url("../font/social.ttf?47898504") format("truetype"), url("../font/social.svg?47898504#social") format("svg");
+  font-weight: normal;
+  font-style: normal; }
+
+/* Chrome hack: SVG is rendered more smooth in Windozze. 100% magic, uncomment if you need it. */
+/* Note, that will break hinting! In other OS-es font will be not as sharp as it could be */
+/*
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  @font-face {
+    font-family: 'social';
+    src: url('../font/social.svg?47898504#social') format('svg');
+  }
+}
+*/
+[class^="icon-"]:before,
+[class*=" icon-"]:before {
+  font-family: "social";
+  font-style: normal;
+  font-weight: normal;
+  speak: none;
+  display: inline-block;
+  text-decoration: inherit;
+  width: 1em;
+  margin-right: .2em;
+  text-align: center;
+  /* opacity: .8; */
+  /* For safety - reset parent styles, that can break glyph codes*/
+  font-variant: normal;
+  text-transform: none;
+  /* fix buttons height, for twitter bootstrap */
+  line-height: 1em;
+  /* Animation center compensation - margins should be symmetric */
+  /* remove if not needed */
+  margin-left: .2em;
+  /* you can be more comfortable with increased icons size */
+  /* font-size: 120%; */
+  /* Font smoothing. That was taken from TWBS */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  /* Uncomment for 3D effect */
+  /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */ }
+
+.icon-facebook:before {
+  content: '\e800'; }
+
+/* '' */
+.icon-twitter:before {
+  content: '\e801'; }
+
+/* '' */
+.icon-instagram:before {
+  content: '\e802'; }
+
+/* '' */
+.icon-youtube:before {
+  content: '\e803'; }
+
+/* '' */
+.icon-youtube-squared:before {
+  content: '\e804'; }
+
+/* '' */
+.icon-youtube-play:before {
+  content: '\e805'; }
+
+/* '' */
+.icon-pinterest-circled:before {
+  content: '\e806'; }
+
+/* '' */
+.icon-pinterest-squared:before {
+  content: '\e807'; }
+
+/* '' */
+.icon-pinterest:before {
+  content: '\e808'; }
+
+/* '' */
+.icon-gplus:before {
+  content: '\e809'; }
+
+/* '' */
+.icon-gplus-circled:before {
+  content: '\e80a'; }
+
+/* '' */
+.icon-vimeo-circled:before {
+  content: '\e80b'; }
+
+/* '' */
+.icon-linkedin:before {
+  content: '\e80c'; }
+
+/* '' */
+@font-face {
+  font-family: 'DTV-DIN-LIGHT';
+  src: url("../font/DINNextLTPro-Light.eot");
+  src: url("../font/DINNextLTPro-Light.eot?#iefix") format("embedded-opentype"), url("../font/DINNextLTPro-Light.woff2") format("woff2"), url("../font/DINNextLTPro-Light.woff") format("woff"), url("../font/DINNextLTPro-Light.ttf") format("truetype"), url("../font/DINNextLTPro-Light.svg#DINNextLTPro-Light") format("svg");
+  font-weight: 300;
+  font-style: normal; }
+
+@font-face {
+  font-family: 'DTV-DIN-BOLD';
+  src: url("../font/DINNextLTPro-Bold.eot");
+  src: url("../font/DINNextLTPro-Bold.eot?#iefix") format("embedded-opentype"), url("../font/DINNextLTPro-Bold.woff2") format("woff2"), url("../font/DINNextLTPro-Bold.woff") format("woff"), url("../font/DINNextLTPro-Bold.ttf") format("truetype"), url("../font/DINNextLTPro-Bold.svg#DINNextLTPro-Bold") format("svg");
+  font-weight: bold;
+  font-style: normal; }
+
+@font-face {
+  font-family: 'DTV-DIN-MEDIUM';
+  src: url("../font/DINNextLTPro-Medium.eot");
+  src: url("../font/DINNextLTPro-Medium.eot?#iefix") format("embedded-opentype"), url("../font/DINNextLTPro-Medium.woff2") format("woff2"), url("../font/DINNextLTPro-Medium.woff") format("woff"), url("../font/DINNextLTPro-Medium.ttf") format("truetype"), url("../font/DINNextLTPro-Medium.svg#DINNextLTPro-Medium") format("svg");
+  font-weight: 500;
+  font-style: normal; }
+
+@font-face {
+  font-family: 'DTV-DIN';
+  src: url("../font/DINNextLTPro-Regular.eot");
+  src: url("../font/DINNextLTPro-Regular.eot?#iefix") format("embedded-opentype"), url("../font/DINNextLTPro-Regular.woff2") format("woff2"), url("../font/DINNextLTPro-Regular.woff") format("woff"), url("../font/DINNextLTPro-Regular.ttf") format("truetype"), url("../font/DINNextLTPro-Regular.svg#DINNextLTPro-Regular") format("svg");
+  font-weight: normal;
+  font-style: normal; }
+
+/*! HTML5 Boilerplate v5.3.0 | MIT License | https://html5boilerplate.com/ */
+/*
+ * What follows is the result of much research on cross-browser styling.
+ * Credit left inline and big thanks to Nicolas Gallagher, Jonathan Neal,
+ * Kroc Camen, and the H5BP dev community and team.
+ */
+/* ==========================================================================
+   Base styles: opinionated defaults
+   ========================================================================== */
+html {
+  color: #222;
+  font-size: 1em;
+  line-height: 1.4; }
+
+/*
+ * Remove text-shadow in selection highlight:
+ * https://twitter.com/miketaylr/status/12228805301
+ *
+ * These selection rule sets have to be separate.
+ * Customize the background color to match your design.
+ */
+::-moz-selection {
+  background: #b3d4fc;
+  text-shadow: none; }
+
+::selection {
+  background: #b3d4fc;
+  text-shadow: none; }
+
+/*
+ * A better looking default horizontal rule
+ */
+hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #ccc;
+  margin: 1em 0;
+  padding: 0; }
+
+/*
+ * Remove the gap between audio, canvas, iframes,
+ * images, videos and the bottom of their containers:
+ * https://github.com/h5bp/html5-boilerplate/issues/440
+ */
+audio,
+canvas,
+iframe,
+img,
+svg,
+video {
+  vertical-align: middle; }
+
+/*
+ * Remove default fieldset styles.
+ */
+fieldset {
+  border: 0;
+  margin: 0;
+  padding: 0; }
+
+/*
+ * Allow only vertical resizing of textareas.
+ */
+textarea {
+  resize: vertical; }
+
+/* ==========================================================================
+   Browser Upgrade Prompt
+   ========================================================================== */
+.browserupgrade {
+  margin: 0.2em 0;
+  background: #ccc;
+  color: #000;
+  padding: 0.2em 0; }
+
+/* ==========================================================================
+   Author's custom styles
+   ========================================================================== */
+/* ==========================================================================
+   Helper classes
+   ========================================================================== */
+/*
+ * Hide visually and from screen readers
+ */
+.hidden {
+  display: none !important; }
+
+/*
+ * Hide only visually, but have it available for screen readers:
+ * http://snook.ca/archives/html_and_css/hiding-content-for-accessibility
+ */
+.visuallyhidden {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px; }
+
+/*
+ * Extends the .visuallyhidden class to allow the element
+ * to be focusable when navigated to via the keyboard:
+ * https://www.drupal.org/node/897638
+ */
+.visuallyhidden.focusable:active,
+.visuallyhidden.focusable:focus {
+  clip: auto;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  position: static;
+  width: auto; }
+
+/*
+ * Hide visually and from screen readers, but maintain layout
+ */
+.invisible {
+  visibility: hidden; }
+
+/*
+ * Clearfix: contain floats
+ *
+ * For modern browsers
+ * 1. The space content is one way to avoid an Opera bug when the
+ *    `contenteditable` attribute is included anywhere else in the document.
+ *    Otherwise it causes space to appear at the top and bottom of elements
+ *    that receive the `clearfix` class.
+ * 2. The use of `table` rather than `block` is only necessary if using
+ *    `:before` to contain the top-margins of child elements.
+ */
+.clearfix:before,
+.clearfix:after {
+  content: " ";
+  /* 1 */
+  display: table;
+  /* 2 */ }
+
+.clearfix:after {
+  clear: both; }
+
+/* ==========================================================================
+   EXAMPLE Media Queries for Responsive Design.
+   These examples override the primary ('mobile first') styles.
+   Modify as content requires.
+   ========================================================================== */
+@media only screen and (min-width: 35em) {
+  /* Style adjustments for viewports that meet the condition */ }
+
+@media print, (-webkit-min-device-pixel-ratio: 1.25), (min-resolution: 1.25dppx), (min-resolution: 120dpi) {
+  /* Style adjustments for high resolution devices */ }
+
+/* ==========================================================================
+   Print styles.
+   Inlined to avoid the additional HTTP request:
+   http://www.phpied.com/delay-loading-your-print-css/
+   ========================================================================== */
+@media print {
+  *,
+  *:before,
+  *:after,
+  *:first-letter,
+  *:first-line {
+    background: transparent !important;
+    color: #000 !important;
+    /* Black prints faster:
+                                   http://www.sanbeiji.com/archives/953 */
+    box-shadow: none !important;
+    text-shadow: none !important; }
+  a,
+  a:visited {
+    text-decoration: underline; }
+  a[href]:after {
+    content: " (" attr(href) ")"; }
+  abbr[title]:after {
+    content: " (" attr(title) ")"; }
+  /*
+     * Don't show links that are fragment identifiers,
+     * or use the `javascript:` pseudo protocol
+     */
+  a[href^="#"]:after,
+  a[href^="javascript:"]:after {
+    content: ""; }
+  pre,
+  blockquote {
+    border: 1px solid #999;
+    page-break-inside: avoid; }
+  /*
+     * Printing Tables:
+     * http://css-discuss.incutio.com/wiki/Printing_Tables
+     */
+  thead {
+    display: table-header-group; }
+  tr,
+  img {
+    page-break-inside: avoid; }
+  img {
+    max-width: 100% !important; }
+  p,
+  h2,
+  h3 {
+    orphans: 3;
+    widows: 3; }
+  h2,
+  h3 {
+    page-break-after: avoid; } }
+
+body
+{
+  font-family: 'DTV-DIN'; }
+nav a {
+  display: block; }
+
+footer {
+  background: #000;
+  height: 10px;
+  width: 100%; }
+
+.inner {
+  margin: 0 auto;
+  max-width: 980px;
+  width: 100%; }
+
+header .menu {
+  background: #000 url(../img/bg-header.png) 0 0 repeat;
+  height: 59px; }
+
+header .logo {
+  padding-top: 15px; }
+  @media only screen and (max-width: 980px) {
+    header .logo {
+      padding-left: 20px; } }
+
+header .top {
+  background: #000;
+  display: block;
+  height: 20px;
+  margin: 0px;
+  position: relative;
+  width: 100%; }
+
+.banner {
+  background: #1b89be;
+  color: #fff;
+  padding: 70px 0px;
+  text-align: center; }
+  .banner h2 {
+    font-size: 30px;
+    margin-bottom: 30px;
+    text-transform: uppercase; }
+    .banner h2 strong {
+      font-family: 'DTV-DIN-BOLD'; }
+    @media only screen and (max-width: 768px) {
+      .banner h2 {
+        padding: 0px 20px; } }
+  .banner p {
+    font-family: 'DTV-DIN-LIGHT';
+    font-size: 24px;
+    line-height: 30px;
+    margin: 0 auto;
+    font-style: italic;
+    width: 405px; }
+    .banner p strong {
+      font-family: 'DTV-DIN-MEDIUM'; }
+    @media only screen and (max-width: 480px) {
+      .banner p {
+        padding: 0px 20px;
+        width: 100%; } }
+
+.content {
+  padding: 40px 0px;
+  padding-bottom: 80px;
+  text-align: center; }
+  .content h3 {
+    font-size: 22px;
+    margin-bottom: 30px; }
+    .content h3 strong {
+      font-family: 'DTV-DIN-BOLD'; }
+    @media only screen and (max-width: 768px) {
+      .content h3 {
+        padding: 0px 20px; } }
+  .content .box-buttons a {
+    border-radius: 5px;
+    color: #000;
+    display: inline-block;
+    font-family: 'DTV-DIN-MEDIUM';
+    font-size: 18px;
+    margin: 0px 10px;
+    padding: 10px 0px 8px;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    width: 216px; }
+    @media only screen and (max-width: 768px) {
+      .content .box-buttons a {
+        display: block;
+        margin: 0 auto;
+        margin-bottom: 20px; } }
+
+.prepago .inner, .instalacion .inner, .mensualidad .inner {
+  margin: 0 auto;
+  max-width: 670px;
+  width: 100%; }
+
+.prepago .menu, .instalacion .menu, .mensualidad .menu {
+  background: #f7f6f6;
+  height: 1%;
+  overflow: hidden;
+  padding-top: 30px;
+  text-align: right; }
+  .prepago .menu h2, .instalacion .menu h2, .mensualidad .menu h2 {
+    background: #fff;
+    color: #1b89be;
+    clear: both;
+    font-size: 20px;
+    float: right;
+    line-height: 50px;
+    padding: 0px 20px; }
+    .prepago .menu h2.center, .instalacion .menu h2.center, .mensualidad .menu h2.center {
+      float: none;
+      margin: 0 auto;
+      text-align: center;
+      width: 150px; }
+    .prepago .menu h2.left, .instalacion .menu h2.left, .mensualidad .menu h2.left {
+      float: left; }
+  .prepago .menu .back, .instalacion .menu .back, .mensualidad .menu .back {
+    background: #1b88be;
+    background: -moz-linear-gradient(top, #1b88be 0%, #136890 100%);
+    /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, #1b88be 0%, #136890 100%);
+    /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, #1b88be 0%, #136890 100%);
+    /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    border-radius: 5px;
+    color: #fff;
+    float: right;
+    font-size: 18px;
+    margin-bottom: 35px;
+    padding: 5px 30px;
+    text-decoration: none; }
+  @media only screen and (max-width: 768px) {
+    .prepago .menu, .instalacion .menu, .mensualidad .menu {
+      padding-left: 20px;
+      padding-right: 20px; } }
+
+.prepago .steps, .instalacion .steps, .mensualidad .steps {
+  position: relative;
+  width: 100%; }
+  .prepago .steps.step1 #step1, .instalacion .steps.step1 #step1, .mensualidad .steps.step1 #step1 {
+    opacity: 1; }
+  .prepago .steps.step2 #step2, .instalacion .steps.step2 #step2, .mensualidad .steps.step2 #step2 {
+    opacity: 1; }
+
+.prepago .step, .instalacion .step, .mensualidad .step {
+  left: 0px;
+  opacity: 0;
+  position: relative;
+  top: 0px;
+  -moz-transition: opacity 250ms;
+  -o-transition: opacity 250ms;
+  -webkit-transition: opacity 250ms;
+  transition: opacity 250ms;
+  width: 100%; }
+  .prepago .step p.info, .instalacion .step p.info, .mensualidad .step p.info {
+    border-bottom: 1px solid #dfdfdf;
+    color: #616161;
+    font-family: 'DTV-DIN-LIGHT';
+    font-size: 18px;
+    margin-bottom: 20px;
+    padding-bottom: 20px; }
+  .prepago .step div.form, .instalacion .step div.form, .mensualidad .step div.form {
+    padding: 45px 90px;
+    position: relative;
+    text-align: left; }
+    .prepago .step div.form input, .instalacion .step div.form input, .mensualidad .step div.form input {
+      /*height: 35px;*/ }
+    .prepago .step div.form .error, .instalacion .step div.form .error, .mensualidad .step div.form .error {
+      color: red;
+      font-size: 14px;
+      height: 16px;
+      text-align: center;
+      width: 100%; }
+    .prepago .step div.form .input, .instalacion .step div.form .input, .mensualidad .step div.form .input {
+      color: #4d4d4d; }
+    @media only screen and (max-width: 768px) {
+      .prepago .step div.form, .instalacion .step div.form, .mensualidad .step div.form {
+        padding: 25px 20px; } }
+  .prepago .step .input.find #btnBuscar, .instalacion .step .input.find #ctl00_ContentMain_btnBuscar, .mensualidad .step .input.find #ctl00_ContentMain_btnBuscar {
+    border: none;
+    background: #515151;
+    border-radius: 3px;
+    cursor: pointer;
+    color: #fff;
+    font-family: 'DTV-DIN-MEDIUM';
+    font-size: 16px;
+    line-height: 33px;
+    width: 95px; }
+    @media only screen and (max-width: 768px) {
+      .prepago .step .input.find button, .instalacion .step .input.find button, .mensualidad .step .input.find button {
+        width: 23%; } }
+  .prepago .step .input.find label, .instalacion .step .input.find label, .mensualidad .step .input.find label {
+    color: #4d4d4d;
+    display: block;
+    font-size: 16px;
+    width: 100%; }
+  .prepago .step .input.find input, .instalacion .step .input.find input, .mensualidad .step .input.find input {
+    display: inline-block;
+    height: 35px;
+    vertical-align: top; }
+    .prepago .step .input.find input[type="text"], .instalacion .step .input.find input[type="text"], .mensualidad .step .input.find input[type="text"] {
+      padding: 0px 10px;
+      width: 100%; }
+      .prepago .step .input.find input[type="text"]#rut, .instalacion .step .input.find input[type="text"]#rut, .mensualidad .step .input.find input[type="text"]#rut {
+        margin-bottom: 5px; }
+  .prepago .step .input.find .box, .instalacion .step .input.find .box, .mensualidad .step .input.find .box {
+    display: inline-block;
+    margin-right: 5%;
+    vertical-align: top;
+    width: 74.2178%; }
+    @media only screen and (max-width: 768px) {
+      .prepago .step .input.find .box, .instalacion .step .input.find .box, .mensualidad .step .input.find .box {
+        width: 70%; } }
+    .prepago .step .input.find .box p, .instalacion .step .input.find .box p, .mensualidad .step .input.find .box p {
+      font-size: 13px;
+      font-family: 'DTV-DIN-LIGHT';
+      font-style: italic; }
+  .prepago .step#step1 .input, .instalacion .step#step1 .input, .mensualidad .step#step1 .input {
+    margin-bottom: 30px; }
+  .prepago .step#step2 div.form, .instalacion .step#step2 div.form, .mensualidad .step#step2 div.form {
+    padding: 5px 90px; }
+    @media only screen and (max-width: 768px) {
+      .prepago .step#step2 div.form, .instalacion .step#step2 div.form, .mensualidad .step#step2 div.form {
+        padding: 5px 20px; } }
+  .prepago .step#step2 .datos-cliente, .instalacion .step#step2 .datos-cliente, .mensualidad .step#step2 .datos-cliente {
+    margin-bottom: 30px; }
+    .prepago .step#step2 .datos-cliente p, .instalacion .step#step2 .datos-cliente p, .mensualidad .step#step2 .datos-cliente p {
+      background: #515151;
+      color: #fff;
+      font-size: 16px;
+      line-height: 30px;
+      text-align: center;
+      width: 100%; }
+    .prepago .step#step2 .datos-cliente .radio, .instalacion .step#step2 .datos-cliente .radio, .mensualidad .step#step2 .datos-cliente .radio {
+      border-bottom: 1px solid #b5b5b5;
+      border-left: 1px solid #b5b5b5;
+      border-right: 1px solid #b5b5b5;
+      margin-bottom: 20px;
+      text-align: right; }
+      .prepago .step#step2 .datos-cliente .radio label, .instalacion .step#step2 .datos-cliente .radio label, .mensualidad .step#step2 .datos-cliente .radio label {
+        cursor: pointer;
+        display: inline-block;
+        font-size: 16px;
+        font-family: 'DTV-DIN-LIGHT';
+        line-height: 27px;
+        padding-right: 4%;
+        padding-top: 2px;
+        vertical-align: middle;
+        width: 85%; }
+      .prepago .step#step2 .datos-cliente .radio .box-radio, .instalacion .step#step2 .datos-cliente .radio .box-radio, .mensualidad .step#step2 .datos-cliente .radio .box-radio {
+        background: #f7f7f7;
+        border-left: 1px solid #b5b5b5;
+        display: inline-block;
+        line-height: 28px;
+        text-align: center;
+        vertical-align: middle;
+        width: 10%; }
+        .prepago .step#step2 .datos-cliente .radio .box-radio input, .instalacion .step#step2 .datos-cliente .radio .box-radio input, .mensualidad .step#step2 .datos-cliente .radio .box-radio input {
+          cursor: pointer;
+          display: inline-block;
+          height: 13px;
+          margin-top: 9px;
+          margin-left: -1px;
+          position: relative;
+          width: 13px; }
+    .prepago .step#step2 .datos-cliente .datos-monto .input, .instalacion .step#step2 .datos-cliente .datos-monto .input, .mensualidad .step#step2 .datos-cliente .datos-monto .input {
+      border: 1px solid #b5b5b5;
+      height: 1%;
+      margin-bottom: 7px;
+      overflow: hidden; }
+      .prepago .step#step2 .datos-cliente .datos-monto .input label, .instalacion .step#step2 .datos-cliente .datos-monto .input label, .mensualidad .step#step2 .datos-cliente .datos-monto .input label {
+        border-right: 1px solid #b5b5b5;
+        float: left;
+        line-height: 35px;
+        text-align: right;
+        padding-right: 10px;
+        width: 20%; }
+        @media only screen and (max-width: 480px) {
+          .prepago .step#step2 .datos-cliente .datos-monto .input label, .instalacion .step#step2 .datos-cliente .datos-monto .input label, .mensualidad .step#step2 .datos-cliente .datos-monto .input label {
+            font-size: 13px;
+            padding-right: 5px; } }
+      .prepago .step#step2 .datos-cliente .datos-monto .input input, .instalacion .step#step2 .datos-cliente .datos-monto .input input, .mensualidad .step#step2 .datos-cliente .datos-monto .input input {
+        background: #f7f7f7;
+        border: none;
+        float: left;
+        padding: 0px 10px;
+        width: 80%; }
+      .prepago .step#step2 .datos-cliente .datos-monto .input.email, .instalacion .step#step2 .datos-cliente .datos-monto .input.email, .mensualidad .step#step2 .datos-cliente .datos-monto .input.email {
+        border: none; }
+        .prepago .step#step2 .datos-cliente .datos-monto .input.email label, .instalacion .step#step2 .datos-cliente .datos-monto .input.email label, .mensualidad .step#step2 .datos-cliente .datos-monto .input.email label {
+          border: 1px solid #b5b5b5; }
+        .prepago .step#step2 .datos-cliente .datos-monto .input.email .box-email, .instalacion .step#step2 .datos-cliente .datos-monto .input.email .box-email, .mensualidad .step#step2 .datos-cliente .datos-monto .input.email .box-email {
+          float: left;
+          width: 80%; }
+          .prepago .step#step2 .datos-cliente .datos-monto .input.email .box-email input, .instalacion .step#step2 .datos-cliente .datos-monto .input.email .box-email input, .mensualidad .step#step2 .datos-cliente .datos-monto .input.email .box-email input {
+            border: 1px solid #b5b5b5;
+            display: inline-block;
+            height: 37px;
+            float: none;
+            vertical-align: middle;
+            width: 44%; }
+            @media only screen and (max-width: 768px) {
+              .prepago .step#step2 .datos-cliente .datos-monto .input.email .box-email input, .instalacion .step#step2 .datos-cliente .datos-monto .input.email .box-email input, .mensualidad .step#step2 .datos-cliente .datos-monto .input.email .box-email input {
+                width: 44.2%; } }
+            @media only screen and (max-width: 640px) {
+              .prepago .step#step2 .datos-cliente .datos-monto .input.email .box-email input, .instalacion .step#step2 .datos-cliente .datos-monto .input.email .box-email input, .mensualidad .step#step2 .datos-cliente .datos-monto .input.email .box-email input {
+                width: 43.8%; } }
+            @media only screen and (max-width: 480px) {
+              .prepago .step#step2 .datos-cliente .datos-monto .input.email .box-email input, .instalacion .step#step2 .datos-cliente .datos-monto .input.email .box-email input, .mensualidad .step#step2 .datos-cliente .datos-monto .input.email .box-email input {
+                width: 43.2%; } }
+            .prepago .step#step2 .datos-cliente .datos-monto .input.email .box-email input:first-child, .instalacion .step#step2 .datos-cliente .datos-monto .input.email .box-email input:first-child, .mensualidad .step#step2 .datos-cliente .datos-monto .input.email .box-email input:first-child {
+              border-left: none; }
+            .prepago .step#step2 .datos-cliente .datos-monto .input.email .box-email input:last-child, .instalacion .step#step2 .datos-cliente .datos-monto .input.email .box-email input:last-child, .mensualidad .step#step2 .datos-cliente .datos-monto .input.email .box-email input:last-child {
+              float: right; }
+          .prepago .step#step2 .datos-cliente .datos-monto .input.email .box-email span, .instalacion .step#step2 .datos-cliente .datos-monto .input.email .box-email span, .mensualidad .step#step2 .datos-cliente .datos-monto .input.email .box-email span {
+            display: inline-block;
+            float: none;
+            line-height: 35px;
+            vertical-align: middle;
+            text-align: center;
+            width: 10%; }
+  .prepago .step#step2 .error, .instalacion .step#step2 .error, .mensualidad .step#step2 .error {
+    margin-bottom: 30px; }
+  .prepago .step#step2 .find, .instalacion .step#step2 .find, .mensualidad .step#step2 .find {
+    margin-bottom: 10px; }
+  .prepago .step#step2 .next, .instalacion .step#step2 .next, .mensualidad .step#step2 .next {
+    float: right; }
+
+.prepago .pago a.close, .instalacion .pago a.close, .mensualidad .pago a.close {
+  background: #00abe3;
+  border-radius: 2px;
+  color: #fff;
+  float: right;
+  font-size: 16px;
+  font-family: 'DTV-DIN-MEDIUM';
+  padding: 10px 20px;
+  text-decoration: none; }
+
+.prepago .pago p.info, .instalacion .pago p.info, .mensualidad .pago p.info {
+  font-family: 'DTV-DIN-LIGHT';
+  font: 18px;
+  margin-bottom: 20px; }
+
+.prepago .pago .box-data, .instalacion .pago .box-data, .mensualidad .pago .box-data {
+  background: #f7f6f6;
+  overflow: hidden;
+  padding: 20px 88px; }
+  @media only screen and (max-width: 768px) {
+    .prepago .pago .box-data, .instalacion .pago .box-data, .mensualidad .pago .box-data {
+      padding: 20px 20px; } }
+
+.prepago .pago .logos, .instalacion .pago .logos, .mensualidad .pago .logos {
+  margin-bottom: 20px; }
+  .prepago .pago .logos img:first-child, .instalacion .pago .logos img:first-child, .mensualidad .pago .logos img:first-child {
+    margin-right: 20px; }
+
+.prepago .pago .text-info, .instalacion .pago .text-info, .mensualidad .pago .text-info {
+  margin-bottom: 40px; }
+  .prepago .pago .text-info img, .instalacion .pago .text-info img, .mensualidad .pago .text-info img {
+    display: inline-block;
+    margin-right: 10px;
+    vertical-align: middle; }
+  .prepago .pago .text-info p, .instalacion .pago .text-info p, .mensualidad .pago .text-info p {
+    font-family: 'DTV-DIN-LIGHT';
+    font: 18px;
+    display: inline-block;
+    line-height: 20px;
+    vertical-align: middle;
+    text-align: left;
+    width: 90%; }
+
+.prepago .pago .text-data, .instalacion .pago .text-data, .mensualidad .pago .text-data {
+  margin-bottom: 30px; }
+  .prepago .pago .text-data h3, .instalacion .pago .text-data h3, .mensualidad .pago .text-data h3 {
+    text-transform: uppercase;
+    text-align: left; }
+  .prepago .pago .text-data .item, .instalacion .pago .text-data .item, .mensualidad .pago .text-data .item {
+    border: 1px solid #b5b5b5;
+    clear: both;
+    height: 1%;
+    margin-bottom: 10px;
+    overflow: hidden; }
+    .prepago .pago .text-data .item p, .instalacion .pago .text-data .item p, .mensualidad .pago .text-data .item p {
+      display: block;
+      color: #515151;
+      font-family: 'DTV-DIN-LIGHT';
+      font-size: 16px;
+      float: left;
+      padding: 10px 20px;
+      text-align: left;
+      width: 65%; }
+      .prepago .pago .text-data .item p:first-child, .instalacion .pago .text-data .item p:first-child, .mensualidad .pago .text-data .item p:first-child {
+        border-right: 1px solid #b5b5b5;
+        background: #f0f0f0;
+        font-family: 'DTV-DIN';
+        font-size: 15px;
+        padding-right: 10px;
+        text-align: right;
+        width: 35%; }
+      @media only screen and (max-width: 480px) {
+        .prepago .pago .text-data .item p, .instalacion .pago .text-data .item p, .mensualidad .pago .text-data .item p {
+          font-size: 13px; }
+          .prepago .pago .text-data .item p:first-child, .instalacion .pago .text-data .item p:first-child, .mensualidad .pago .text-data .item p:first-child {
+            font-size: 13px; } }
+  .prepago .pago .text-data .list, .instalacion .pago .text-data .list, .mensualidad .pago .text-data .list {
+    font-family: 'DTV-DIN-LIGHT';
+    font-size: 18px;
+    padding-left: 25px;
+    text-align: left; }
+    .prepago .pago .text-data .list h4, .instalacion .pago .text-data .list h4, .mensualidad .pago .text-data .list h4 {
+      margin-bottom: 30px; }
+    .prepago .pago .text-data .list ul img, .instalacion .pago .text-data .list ul img, .mensualidad .pago .text-data .list ul img {
+      display: inline-block;
+      margin-right: 10px; }
+    .prepago .pago .text-data .list ul li, .instalacion .pago .text-data .list ul li, .mensualidad .pago .text-data .list ul li {
+      margin-bottom: 20px; }
+    .prepago .pago .text-data .list ul p, .instalacion .pago .text-data .list ul p, .mensualidad .pago .text-data .list ul p {
+      display: inline-block;
+      vertical-align: top;
+      width: 95%; }
+
+.instalacion .step#step2 .find {
+  margin-bottom: 20px; }
+
+.instalacion .pago .text-data .item {
+  border-bottom: none;
+  margin-bottom: 0px; }
+  .instalacion .pago .text-data .item p:first-child {
+    background: #fff; }
+  .instalacion .pago .text-data .item p:last-child {
+    background: #f0f0f0;
+    text-align: right; }
+  .instalacion .pago .text-data .item div.input-pagar {
+    height: 35px;
+    padding-right: 20px;
+    text-align: right; }
+    .instalacion .pago .text-data .item div.input-pagar input {
+      display: inline-block;
+      margin-top: 1px; }
+  .instalacion .pago .text-data .item input#detalle {
+    padding: 0px 10px;
+    width: 65%; }
+  .instalacion .pago .text-data .item:last-child {
+    border-bottom: 1px solid #b5b5b5; }
+
+.mensualidad .exito .close, .instalacion .exito .close {
+  background: #1b88be;
+  background: -moz-linear-gradient(top, #1b88be 0%, #136890 100%);
+  /* FF3.6-15 */
+  background: -webkit-linear-gradient(top, #1b88be 0%, #136890 100%);
+  /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to bottom, #1b88be 0%, #136890 100%);
+  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  border-radius: 5px;
+  color: #fff;
+  float: right;
+  font-size: 18px;
+  margin-bottom: 35px;
+  padding: 5px 20px;
+  text-decoration: none; }
+
+.mensualidad .exito .text-info, .instalacion .exito .text-info {
+  color: #616161;
+  padding: 30px 55px; }
+  .mensualidad .exito .text-info p, .instalacion .exito .text-info p {
+    font-family: 'DTV-DIN-LIGHT';
+    font-size: 18px;
+    margin-bottom: 25px; }
+
+.mensualidad .pago.confirmar .text-data, .instalacion .pago.confirmar .text-data {
+  margin-bottom: 70px; }
+  .mensualidad .pago.confirmar .text-data .item, .instalacion .pago.confirmar .text-data .item {
+    border-bottom: 1px solid #b5b5b5;
+    height: 35px;
+    margin-bottom: 20px; }
+    .mensualidad .pago.confirmar .text-data .item p:first-child, .instalacion .pago.confirmar .text-data .item p:first-child {
+      background: #515151;
+      color: #fff; }
+    .mensualidad .pago.confirmar .text-data .item p:last-child, .instalacion .pago.confirmar .text-data .item p:last-child {
+      background: #f7f7f7;
+      text-align: right; }
+
+.mensualidad .pago.datos .form, .instalacion .pago.datos .form {
+  padding: 15px 90px; }
+
+.mensualidad .pago.datos .opciones-pago, .instalacion .pago.datos .opciones-pago {
+  margin-bottom: 30px; }
+  .mensualidad .pago.datos .opciones-pago .item, .instalacion .pago.datos .opciones-pago .item {
+    border: 1px solid #b5b5b5;
+    border-bottom: none;
+    clear: both;
+    color: #414141;
+    height: 1%;
+    overflow: hidden; }
+    .mensualidad .pago.datos .opciones-pago .item > p, .instalacion .pago.datos .opciones-pago .item > p {
+      border-right: 1px solid #b5b5b5;
+      float: left;
+      line-height: 35px;
+      padding-right: 10px;
+      text-align: right;
+      width: 30%; }
+    .mensualidad .pago.datos .opciones-pago .item div.valor, .instalacion .pago.datos .opciones-pago .item div.valor {
+      background: #f7f7f7;
+      border-right: 1px solid #b5b5b5;
+      float: left;
+      font-family: 'DTV-DIN-LIGHT';
+      font-size: 14px;
+      line-height: 35px;
+      padding-right: 10px;
+      text-align: right;
+      width: 62%; }
+      .mensualidad .pago.datos .opciones-pago .item div.valor.abono p, .instalacion .pago.datos .opciones-pago .item div.valor.abono p {
+        display: inline-block;
+        line-height: 11px;
+        padding-right: 5px;
+        vertical-align: text-bottom; }
+      .mensualidad .pago.datos .opciones-pago .item div.valor.abono input, .instalacion .pago.datos .opciones-pago .item div.valor.abono input {
+        display: inline-block;
+        height: 25px;
+        text-align: right;
+        padding: 0px 5px; }
+    .mensualidad .pago.datos .opciones-pago .item div.radio, .instalacion .pago.datos .opciones-pago .item div.radio {
+      background: #ececec;
+      float: left;
+      text-align: center;
+      width: 8%; }
+      .mensualidad .pago.datos .opciones-pago .item div.radio input, .instalacion .pago.datos .opciones-pago .item div.radio input {
+        display: inline-block;
+        height: 30px;
+        margin-left: 3px; }
+    .mensualidad .pago.datos .opciones-pago .item:last-child, .instalacion .pago.datos .opciones-pago .item:last-child {
+      border-bottom: 1px solid #b5b5b5; }
+
+.mensualidad .pago.datos .row, .instalacion .pago.datos .row {
+  border: 1px solid #b5b5b5;
+  clear: both;
+  height: 1%;
+  margin-bottom: 10px;
+  overflow: hidden; }
+  .mensualidad .pago.datos .row p, .instalacion .pago.datos .row p {
+    display: block;
+    color: #515151;
+    font-family: 'DTV-DIN-LIGHT';
+    font-size: 16px;
+    float: left;
+    line-height: 35px;
+    padding: 0px 20px;
+    text-align: left;
+    width: 65%; }
+    .mensualidad .pago.datos .row p:first-child, .instalacion .pago.datos .row p:first-child {
+      border-right: 1px solid #b5b5b5;
+      background: #f0f0f0;
+      font-family: 'DTV-DIN';
+      font-size: 15px;
+      padding-right: 10px;
+      text-align: right;
+      width: 35%; }
+    @media only screen and (max-width: 480px) {
+      .mensualidad .pago.datos .row p, .instalacion .pago.datos .row p {
+        font-size: 13px; }
+        .mensualidad .pago.datos .row p:first-child, .instalacion .pago.datos .row p:first-child {
+          font-size: 13px; } }
+  .mensualidad .pago.datos .row.suscriptor, .instalacion .pago.datos .row.suscriptor {
+    margin-bottom: 30px; }
+    .mensualidad .pago.datos .row.suscriptor p:first-child, .instalacion .pago.datos .row.suscriptor p:first-child {
+      background: #515151;
+      color: #fff; }
+    .mensualidad .pago.datos .row.suscriptor p:last-child, .instalacion .pago.datos .row.suscriptor p:last-child {
+      color: #4d4d4d; }
+  .mensualidad .pago.datos .row.total-pago, .instalacion .pago.datos .row.total-pago {
+    border: none;
+    margin-bottom: 20px; }
+    .mensualidad .pago.datos .row.total-pago p:first-child, .instalacion .pago.datos .row.total-pago p:first-child {
+      border: none;
+      background: transparent;
+      color: #4d4d4d; }
+    .mensualidad .pago.datos .row.total-pago p:last-child, .instalacion .pago.datos .row.total-pago p:last-child {
+      border: 1px solid #b5b5b5;
+      height: 35px;
+      text-align: right; }
+
+.mensualidad .pago.datos .step#step2 .find, .instalacion .pago.datos .step#step2 .find {
+  margin-bottom: 30px; }
+
+.no-csstransitions .prepago .step#step2 .datos-cliente .radio .box-radio input, .no-borderradius .prepago .step#step2 .datos-cliente .radio .box-radio input {
+  height: 20px;
+  width: 20px; }
+
+.no-borderradius .prepago .step .input.find button, .no-borderradius .instalacion .step .input.find button, .no-borderradius .mensualidad .step .input.find button {
+  width: 19.9%; }
+
+.no-borderradius .prepago .step#step2 .datos-cliente .datos-monto .input.email .box-email input, .no-borderradius .instalacion .step#step2 .datos-cliente .datos-monto .input.email .box-email input, .no-borderradius .mensualidad .step#step2 .datos-cliente .datos-monto .input.email .box-email input {
+  width: 43.9%; }
+
+.no-borderradius .instalacion .datos.pago .row p.totalPago, .no-borderradius .mensualidad .datos.pago .row p.totalPago {
+  border: 1px solid #b5b5b5; }
+
+.no-borderradius .instalacion .pago .text-data .item.last-item, .no-borderradius .mensualidad .pago .text-data .item.last-item {
+  border-bottom: 1px solid #b5b5b5; }
+
+.no-borderradius .mensualidad .datos-pago .opciones-pago .item div.radio input {
+  height: 35px; }
+
+.no-borderradius .mensualidad .datos-pago .opciones-pago .item.last-item {
+  border-bottom: 1px solid #b5b5b5; }
+.no-borderradius body
+{
+  font-family: 'Arial';}
+.no-borderradius .mensualidad .step#step2 .next
+{
+  line-height: 10px;
+  }
+
+.box-radio
+{
+    padding: 5px 0;
+}
+
+/*** INI RESPONSIVE ***/
+@media screen and (min-width: 280px) and (max-width: 300px){
+    #logoDirectv{
+        width: 90px !important;
+    }
+
+    #logoWebpay{
+        width: 90px !important;
+    }
+
+    H3{
+        font-size:16px !important;
+    }
+
+   #inner{
+        width: 200px !important;
+    }
+
+    #msgTxTBK{
+        width: 180px !important;
+    }
+
+    #imgTxTBK{
+        width: 20px !important;
+    }
+}
+
+@media screen and (min-width: 300px) and (max-width: 320px){
+    #logoDirectv{
+        width: 100px !important;
+    }
+
+    #logoWebpay{
+        width: 100px !important;
+    }
+
+    H3{
+        font-size:18px !important;
+    }
+
+   #inner{
+        width: 200px !important;
+    }
+
+    #msgTxTBK{
+        width: 200px !important;
+    }
+
+    #imgTxTBK{
+        width: 30px !important;
+    }
+
+    #HyperLink1{
+        font-size: 0.87em !important;
+    }
+}
+
+@media screen and (min-width: 320px){
+    #logoDirectv{
+        width: 100px !important;
+    }
+
+    #logoWebpay{
+        width: 100px !important;
+    }
+
+    H3{
+        font-size:20px !important;
+    }
+
+   #inner{
+        width: 200px !important;
+    }
+
+    #msgTxTBK{
+        width: 200px !important;
+    }
+
+    #imgTxTBK{
+        width: 30px !important;
+    }
+
+    #HyperLink1{
+        font-size: 0.87em !important;
+    }
+}
+
+@media screen and (min-width: 400px){
+    #logoDirectv{
+        width: 120px !important;
+    }
+
+    #logoWebpay{
+        width: 120px !important;
+    }
+
+    H3{
+        font-size:20px !important;
+    }
+
+   #inner{
+        width: 300px !important;
+    }
+
+    #msgTxTBK{
+        width: 300px !important;
+    }
+}
+
+ @media screen and (min-width: 440px){
+    #logoDirectv{
+        width: 130px !important;
+    }
+
+    #logoWebpay{
+        width: 130px !important;
+    }
+
+    H3{
+        font-size:20px !important;
+    }
+
+   #inner{
+        width: 310px !important;
+    }
+
+    #msgTxTBK{
+        width: 310px !important;
+    }
+}
+
+@media screen and (min-width: 500px){
+    #logoDirectv{
+        width: 130px !important;
+    }
+
+    #logoWebpay{
+        width: 130px !important;
+    }
+
+    H3{
+        font-size:20px !important;
+    }
+
+   #inner{
+        width: 310px !important;
+    }
+
+    #msgTxTBK{
+        width: 310px !important;
+    }
+}
+
+@media screen and (min-width: 640px){
+    #logoDirectv{
+        width: 170px !important;
+    }
+
+    #logoWebpay{
+        width: 170px !important;
+    }
+
+    H3{
+        font-size:20px !important;
+    }
+
+   #inner{
+        width: 500px !important;
+    }
+
+    #msgTxTBK{
+        width: 500px !important;
+    }
+}
+
+@media screen and (min-width: 768px){
+    #logoDirectv{
+        width: 170px !important;
+    }
+
+    #logoWebpay{
+        width: 170px !important;
+    }
+
+    H3{
+        font-size:20px !important;
+    }
+
+   #inner{
+        width: 440px !important;
+    }
+
+    #msgTxTBK{
+        width: 440px !important;
+    }
+}
+
+@media screen and (min-width: 240px) and (max-width: 270px){
+    #box{
+        width: 100px;
+    }
+
+    #boxPreventa{
+        width: 100px;
+    }
+
+    #nroPreventaHuf{
+        margin-right: 0% !important;
+    }
+}
+
+@media screen and (min-width: 270px) and (max-width: 320px){
+    #box{
+        width: 115px;
+    }
+
+    #boxPreventa{
+        width: 115px;
+    }
+
+     #nroPreventaHuf{
+        margin-right: 0% !important;
+    }
+}
+
+@media screen and (min-width: 320px) and (max-width: 437px){
+    #box{
+        width: 167px;
+    }
+
+    #boxPreventa{
+        width: 167px;
+    }
+
+     #nroPreventaHuf{
+        margin-right: 2% !important;
+    }
+
+    [role="dialog"] {
+        width:310px !important;
+        top: 30px !important;
+    }
+}
+
+@media screen and (min-width: 438px) and (max-width: 500px){
+    #box{
+        width: 167px;
+    }
+
+    #boxPreventa{
+        width: 167px;
+    }
+
+     #nroPreventaHuf{
+        margin-right: 4% !important;
+    }
+
+    [role="dialog"] {
+        width:470px !important;
+        top: 30px !important;
+    }
+}
+
+@media screen and (min-width: 500px){
+     #nroPreventaHuf{
+        margin-right: 6% !important;
+    }
+
+    [role="dialog"] {
+        width:470px !important;
+        top: 30px !important;
+    }
+}
+/*** FIN RESPONSIVE ***/
+
+/*** INI DIV DATOS RECARGA ***/
+.prepago .step#step2 .datos-recarga, .instalacion .step#step2 .datos-recarga, .mensualidad .step#step2 .datos-recarga {
+    font-family: 'DTV-DIN-MEDIUM';
+    color: #515151; }
+    .prepago .step#step2 .datos-recarga .clst, .instalacion .step#step2 .datos-recarga .clst, .mensualidad .step#step2 .datos-recarga .clst {
+      color: #00abe3; }
+    .prepago .step#step2 .datos-recarga .choice, .instalacion .step#step2 .datos-recarga .choice, .mensualidad .step#step2 .datos-recarga .choice {
+      font-family: 'DTV-DIN-LIGHT';
+      font-size: 18px;
+      margin-bottom: 15px;
+      text-align: center; }
+      .prepago .step#step2 .datos-recarga .choice .head, .instalacion .step#step2 .datos-recarga .choice .head, .mensualidad .step#step2 .datos-recarga .choice .head {
+        border-bottom: 1px solid #b7b7b7;
+        font-family: 'DTV-DIN-MEDIUM';
+        margin-bottom: 20px;
+        padding-bottom: 20px; }
+    .prepago .step#step2 .datos-recarga .choices, .instalacion .step#step2 .datos-recarga .choices, .mensualidad .step#step2 .datos-recarga .choices {
+      height: 1%;
+      margin-bottom: 30px;
+      overflow: hidden;
+      text-align: center; }
+      .prepago .step#step2 .datos-recarga .choices .box, .instalacion .step#step2 .datos-recarga .choices .box, .mensualidad .step#step2 .datos-recarga .choices .box {
+        float: left;
+        margin-right: 2.3333%;
+        padding-bottom: 25px;
+        position: relative;
+        width: 23.25%; }
+        @media only screen and (max-width: 640px) {
+          .prepago .step#step2 .datos-recarga .choices .box, .instalacion .step#step2 .datos-recarga .choices .box, .mensualidad .step#step2 .datos-recarga .choices .box {
+            border-bottom: 1px solid #b7b7b7;
+            border-top: 1px solid #b7b7b7;
+            margin-right: 0px;
+            margin-bottom: 25px;
+            padding-bottom: 0px;
+            width: 100%; } }
+        .prepago .step#step2 .datos-recarga .choices .box .color-box, .instalacion .step#step2 .datos-recarga .choices .box .color-box, .mensualidad .step#step2 .datos-recarga .choices .box .color-box {
+          color: #fff;
+          font-size: 15px;
+          height: 82px;
+          margin-bottom: 15px;
+          padding: 11px;
+          position: relative; }
+          @media only screen and (max-width: 640px) {
+            .prepago .step#step2 .datos-recarga .choices .box .color-box, .instalacion .step#step2 .datos-recarga .choices .box .color-box, .mensualidad .step#step2 .datos-recarga .choices .box .color-box {
+              float: left;
+              margin-bottom: 0px;
+              width: 40%; } }
+          @media only screen and (max-width: 480px) {
+            .prepago .step#step2 .datos-recarga .choices .box .color-box, .instalacion .step#step2 .datos-recarga .choices .box .color-box, .mensualidad .step#step2 .datos-recarga .choices .box .color-box {
+              font-size: 12px;
+              padding: 11px 5px;
+              width: 30%; } }
+          .prepago .step#step2 .datos-recarga .choices .box .color-box .number, .instalacion .step#step2 .datos-recarga .choices .box .color-box .number, .mensualidad .step#step2 .datos-recarga .choices .box .color-box .number {
+            position: absolute;
+            right: 5px;
+            top: 5px; }
+        .prepago .step#step2 .datos-recarga .choices .box .option, .instalacion .step#step2 .datos-recarga .choices .box .option, .mensualidad .step#step2 .datos-recarga .choices .box .option {
+          border-top: 1px solid #b7b7b7;
+          font-size: 14px;
+          height: 60px;
+          margin: 0 auto;
+          padding: 10px 0px;
+          width: 90%; }
+          @media only screen and (max-width: 640px) {
+            .prepago .step#step2 .datos-recarga .choices .box .option, .instalacion .step#step2 .datos-recarga .choices .box .option, .mensualidad .step#step2 .datos-recarga .choices .box .option {
+              border-top: none;
+              border-left: 1px solid #b7b7b7;
+              height: 82px;
+              padding-top: 25px;
+              float: left;
+              width: 30%; }
+              .prepago .step#step2 .datos-recarga .choices .box .option:first-child, .instalacion .step#step2 .datos-recarga .choices .box .option:first-child, .mensualidad .step#step2 .datos-recarga .choices .box .option:first-child {
+                border: none; }
+              .prepago .step#step2 .datos-recarga .choices .box .option:last-child, .instalacion .step#step2 .datos-recarga .choices .box .option:last-child, .mensualidad .step#step2 .datos-recarga .choices .box .option:last-child {
+                border-right: 1px solid #b7b7b7; } }
+          @media only screen and (max-width: 480px) {
+            .prepago .step#step2 .datos-recarga .choices .box .option, .instalacion .step#step2 .datos-recarga .choices .box .option, .mensualidad .step#step2 .datos-recarga .choices .box .option {
+              width: 35%; } }
+          .prepago .step#step2 .datos-recarga .choices .box .option input, .instalacion .step#step2 .datos-recarga .choices .box .option input, .mensualidad .step#step2 .datos-recarga .choices .box .option input {
+            height: 13px; }
+          .prepago .step#step2 .datos-recarga .choices .box .option span, .instalacion .step#step2 .datos-recarga .choices .box .option span, .mensualidad .step#step2 .datos-recarga .choices .box .option span {
+            display: block;
+            margin-bottom: 5px; }
+          .prepago .step#step2 .datos-recarga .choices .box .option .input, .instalacion .step#step2 .datos-recarga .choices .box .option .input, .mensualidad .step#step2 .datos-recarga .choices .box .option .input {
+            padding-right: 10px;
+            text-align: right; }
+            @media only screen and (max-width: 640px) {
+              .prepago .step#step2 .datos-recarga .choices .box .option .input, .instalacion .step#step2 .datos-recarga .choices .box .option .input, .mensualidad .step#step2 .datos-recarga .choices .box .option .input {
+                text-indent: 20px;
+                text-align: center; } }
+            @media only screen and (max-width: 480px) {
+              .prepago .step#step2 .datos-recarga .choices .box .option .input, .instalacion .step#step2 .datos-recarga .choices .box .option .input, .mensualidad .step#step2 .datos-recarga .choices .box .option .input {
+                text-indent: 10px; } }
+          .prepago .step#step2 .datos-recarga .choices .box .option.none, .instalacion .step#step2 .datos-recarga .choices .box .option.none, .mensualidad .step#step2 .datos-recarga .choices .box .option.none {
+            border: none; }
+        .prepago .step#step2 .datos-recarga .choices .box.box1 .color-box, .instalacion .step#step2 .datos-recarga .choices .box.box1 .color-box, .mensualidad .step#step2 .datos-recarga .choices .box.box1 .color-box {
+          background: #00abe3; }
+          @media only screen and (max-width: 768px) {
+            .prepago .step#step2 .datos-recarga .choices .box.box1 .color-box, .instalacion .step#step2 .datos-recarga .choices .box.box1 .color-box, .mensualidad .step#step2 .datos-recarga .choices .box.box1 .color-box {
+              padding-top: 20px; } }
+        .prepago .step#step2 .datos-recarga .choices .box.box2 .color-box, .instalacion .step#step2 .datos-recarga .choices .box.box2 .color-box, .mensualidad .step#step2 .datos-recarga .choices .box.box2 .color-box {
+          background: #1094bf; }
+          @media only screen and (max-width: 768px) {
+            .prepago .step#step2 .datos-recarga .choices .box.box2 .color-box, .instalacion .step#step2 .datos-recarga .choices .box.box2 .color-box, .mensualidad .step#step2 .datos-recarga .choices .box.box2 .color-box {
+              padding-top: 20px; } }
+        .prepago .step#step2 .datos-recarga .choices .box.box3 .color-box, .instalacion .step#step2 .datos-recarga .choices .box.box3 .color-box, .mensualidad .step#step2 .datos-recarga .choices .box.box3 .color-box {
+          background: #137b9d;
+          padding-top: 20px; }
+        .prepago .step#step2 .datos-recarga .choices .box:after, .instalacion .step#step2 .datos-recarga .choices .box:after, .mensualidad .step#step2 .datos-recarga .choices .box:after {
+          background: #b7b7b7;
+          content: '';
+          height: 100%;
+          position: absolute;
+          right: -6px;
+          top: 0px;
+          width: 1px; }
+        .prepago .step#step2 .datos-recarga .choices .box.last, .instalacion .step#step2 .datos-recarga .choices .box.last, .mensualidad .step#step2 .datos-recarga .choices .box.last {
+          border: none;
+          margin-right: 0px;
+          padding: 0px; }
+          .prepago .step#step2 .datos-recarga .choices .box.last .color-box, .instalacion .step#step2 .datos-recarga .choices .box.last .color-box, .mensualidad .step#step2 .datos-recarga .choices .box.last .color-box {
+            background: #13617a;
+            padding-top: 20px; }
+          @media only screen and (max-width: 640px) {
+            .prepago .step#step2 .datos-recarga .choices .box.last, .instalacion .step#step2 .datos-recarga .choices .box.last, .mensualidad .step#step2 .datos-recarga .choices .box.last {
+              border-bottom: 1px solid #b7b7b7;
+              border-top: 1px solid #b7b7b7;
+              margin-right: 0px;
+              margin-bottom: 25px;
+              padding-bottom: 0px;
+              width: 100%; } }
+          .prepago .step#step2 .datos-recarga .choices .box.last:after, .instalacion .step#step2 .datos-recarga .choices .box.last:after, .mensualidad .step#step2 .datos-recarga .choices .box.last:after {
+            display: none; }
+    .prepago .step#step2 .datos-recarga .description-choice, .instalacion .step#step2 .datos-recarga .description-choice, .mensualidad .step#step2 .datos-recarga .description-choice {
+      border-bottom: 1px solid #b7b7b7;
+      clear: both;
+      margin-bottom: 30px;
+      padding-bottom: 30px; }
+      .prepago .step#step2 .datos-recarga .description-choice .row, .instalacion .step#step2 .datos-recarga .description-choice .row, .mensualidad .step#step2 .datos-recarga .description-choice .row {
+        margin-bottom: 20px; }
+      .prepago .step#step2 .datos-recarga .description-choice .thumb, .instalacion .step#step2 .datos-recarga .description-choice .thumb, .mensualidad .step#step2 .datos-recarga .description-choice .thumb {
+        display: inline-block;
+        vertical-align: middle;
+        text-align: center;
+        width: 15%; }
+        @media only screen and (max-width: 480px) {
+          .prepago .step#step2 .datos-recarga .description-choice .thumb, .instalacion .step#step2 .datos-recarga .description-choice .thumb, .mensualidad .step#step2 .datos-recarga .description-choice .thumb {
+            width: 25%; } }
+        .prepago .step#step2 .datos-recarga .description-choice .thumb img, .instalacion .step#step2 .datos-recarga .description-choice .thumb img, .mensualidad .step#step2 .datos-recarga .description-choice .thumb img {
+          display: inline-block;
+          width: auto; }
+      .prepago .step#step2 .datos-recarga .description-choice .text, .instalacion .step#step2 .datos-recarga .description-choice .text, .mensualidad .step#step2 .datos-recarga .description-choice .text {
+        display: inline-block;
+        font-family: 'DTV-DIN-LIGHT';
+        font-size: 14px;
+        font-style: italic;
+        vertical-align: middle;
+        width: 84%; }
+        @media only screen and (max-width: 480px) {
+          .prepago .step#step2 .datos-recarga .description-choice .text, .instalacion .step#step2 .datos-recarga .description-choice .text, .mensualidad .step#step2 .datos-recarga .description-choice .text {
+            width: 73%; } }
+        .prepago .step#step2 .datos-recarga .description-choice .text span, .instalacion .step#step2 .datos-recarga .description-choice .text span, .mensualidad .step#step2 .datos-recarga .description-choice .text span {
+          display: inline-block;
+          vertical-align: top;
+          width: 93%; }
+          .prepago .step#step2 .datos-recarga .description-choice .text span.number, .instalacion .step#step2 .datos-recarga .description-choice .text span.number, .mensualidad .step#step2 .datos-recarga .description-choice .text span.number {
+            font-weight: bold;
+            width: 5%; }
+    .prepago .step#step2 .datos-recarga .monto, .instalacion .step#step2 .datos-recarga .monto, .mensualidad .step#step2 .datos-recarga .monto {
+      border-bottom: 1px solid #b7b7b7;
+      text-align: center; }
+      .prepago .step#step2 .datos-recarga .monto > span, .instalacion .step#step2 .datos-recarga .monto > span, .mensualidad .step#step2 .datos-recarga .monto > span {
+        font-family: 'DTV-DIN-MEDIUM';
+        font-size: 18px; }
+      .prepago .step#step2 .datos-recarga .monto .datos-cliente, .instalacion .step#step2 .datos-recarga .monto .datos-cliente, .mensualidad .step#step2 .datos-recarga .monto .datos-cliente {
+        margin-bottom: 40px; }
+      .prepago .step#step2 .datos-recarga .monto .text, .instalacion .step#step2 .datos-recarga .monto .text, .mensualidad .step#step2 .datos-recarga .monto .text {
+        margin-bottom: 30px; }
+
+/*** FIN DIV DATOS RECARGA ***/
+
+/*** INI CONOCE MAS ***/
+.prepago .buttons .more, .instalacion .buttons .more, .mensualidad .buttons .more {
+    background: #1b88be;
+    background: -moz-linear-gradient(top, #1b88be 0%, #136890 100%);
+    /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, #1b88be 0%, #136890 100%);
+    /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, #1b88be 0%, #136890 100%);
+    /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    border-radius: 5px;
+    color: #fff;
+    float: left;
+    font-size: 18px;
+    margin-bottom: 35px;
+    padding: 10px 30px;
+    text-decoration: none; }
+    @media only screen and (max-width: 480px) {
+      .prepago .buttons .more, .instalacion .buttons .more, .mensualidad .buttons .more {
+        padding: 10px 15px; } }
+
+.more {
+    background: #1b88be;
+    background: -moz-linear-gradient(top, #1b88be 0%, #136890 100%);
+    /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, #1b88be 0%, #136890 100%);
+    /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, #1b88be 0%, #136890 100%);
+    /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    border-radius: 5px;
+    color: #fff;
+    float: left;
+    font-size: 18px;
+    margin-bottom: 35px;
+    padding: 10px 30px;
+    text-decoration: none; }
+    @media only screen and (max-width: 480px) {
+      .prepago .buttons .more, .instalacion .buttons .more, .mensualidad .buttons .more {
+        padding: 10px 15px; } }
+
+   /*** FIN CONOCE MAS ***/
+
+.textboxLbl
+{
+	border:0px solid #FFFFFF;
+	cursor: pointer;
+    display: inline;
+    font-size: 16px;
+    font-family: 'DTV-DIN-LIGHT';
+    line-height: 27px;
+    padding-right: 4%;
+	padding-top: 2px;
+    vertical-align: middle;
+    text-align:right;
+	width:100px;
+}
+.textboxLblTotal
+{
+    font-size: 16px;
+	width:100px;
+	height:22px;
+	border:0px solid #FFFFFF;
+	/*background: #F6F6F6;*/
+	/*color:#0A5EA1;*/
+	text-align: right;
+	vertical-align: middle; /* baseline;	*/
+	font-family: 'DTV-DIN-LIGHT';
+}
+.textboxSub
+{
+    font-size: 12px;
+	width:100px;
+	height:16px;
+	border:0px solid #FFFFFF;
+	background: #FFFFFF;
+	color:#FFFFFF;
+	text-align: right;
+	vertical-align: bottom; /* baseline;	*/
+}
+.textboxArr
+{
+    font-size: 12px;
+	width:100px;
+	height:16px;
+	border:0px solid #FFFFFF;
+	background: #FFFFFF;
+	color: #FFFFFF;
+	vertical-align: bottom; /* baseline;	*/
+}
+.textboxAux
+{
+    font-size: 12px;
+	width:100px;
+	height:16px;
+	border:0px solid #FFFFFF;
+	background: #FFFFFF;
+	color: #FFFFFF;
+	vertical-align: bottom; /* baseline;	*/
+}

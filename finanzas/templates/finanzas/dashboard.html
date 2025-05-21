@@ -3,6 +3,8 @@
 
 {% block extra_css %}
     <link rel="stylesheet" href="{% static 'css/dashboard.css' %}?v=1.0.1">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/2.2.2/css/buttons.dataTables.min.css">
 {% endblock %}
 
 {% block title %}
@@ -42,35 +44,36 @@
         </div>
     </div>
 
-<h2>Transacciones</h2>
-<table>
-    <thead>
-        <tr>
-            <th>Fecha</th>
-            <th>Descripción</th>
-            <th>Tipo</th>
-            <th>Monto</th>
-            <th>Saldo Acumulado</th>
-            <th>Acciones</th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for transaccion in transacciones %}
-        <tr>
-            <td>{{ transaccion.fecha }}</td>
-            <td>{{ transaccion.descripcion }}</td>
-            <td class="{{ transaccion.tipo }}">{{ transaccion.get_tipo_display }}</td>
-            <td>${{ transaccion.monto|floatformat:2 }}</td>
-            <td class="{% if transaccion.saldo_acumulado >= 0 %}saldo-positivo{% else %}saldo-negativo{% endif %}">${{ transaccion.saldo_acumulado|floatformat:2 }}</td>
-            <td class="acciones">
-                <a href="{% url 'finanzas:editar_transaccion' transaccion.id %}">Editar</a>
-                <a href="{% url 'finanzas:eliminar_transaccion' transaccion.id %}">Eliminar</a>
-            </td>
-        </tr>
-        {% empty %}
-        <tr><td colspan="6">No hay transacciones registradas para este mes.</td></tr>
-        {% endfor %}
-    </tbody>
+    <h2>Transacciones</h2>
+    <div class="table-responsive">
+    <table id="transaccionesTable" class="display nowrap" style="width:100%">
+        <thead>
+            <tr>
+                <th>Fecha</th>
+                <th>Descripción</th>
+                <th>Tipo</th>
+                <th>Monto</th>
+                <th>Saldo Acumulado</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for transaccion in transacciones %}
+            <tr>
+                <td data-order="{{ transaccion.fecha_creacion|date:'U' }}">{{ transaccion.fecha|date:'d/m/Y H:i' }}</td>
+                <td>{{ transaccion.descripcion }}</td>
+                <td class="{{ transaccion.tipo }}">{{ transaccion.get_tipo_display }}</td>
+                <td>${{ transaccion.monto|floatformat:2 }}</td>
+                <td class="{% if transaccion.saldo_acumulado >= 0 %}saldo-positivo{% else %}saldo-negativo{% endif %}">${{ transaccion.saldo_acumulado|floatformat:2 }}</td>
+                <td class="acciones">
+                    <a href="{% url 'finanzas:editar_transaccion' transaccion.id %}">Editar</a>
+                    <a href="{% url 'finanzas:eliminar_transaccion' transaccion.id %}">Eliminar</a>
+                </td>
+            </tr>
+            {% empty %}
+            <tr><td colspan="6">No hay transacciones registradas para este mes.</td></tr>
+            {% endfor %}
+        </tbody>
 </table>
 <style>
     table {
@@ -108,5 +111,179 @@
         margin-right: 5px;
         text-decoration: none;
     }
+    .dataTables_wrapper .dataTables_filter {
+        float: right;
+        margin-bottom: 1em;
+    }
+    .dataTables_wrapper .dt-buttons {
+        margin-bottom: 1em;
+    }
+    /* Estilos para los filtros de columna */
+    .filter-header {
+        position: relative;
+        padding-bottom: 25px;
+    }
+    .filter-input {
+        width: 100%;
+        padding: 4px;
+        box-sizing: border-box;
+        margin-top: 5px;
+        font-size: 0.85em;
+    }
+    .clear-filter {
+        position: absolute;
+        right: 5px;
+        top: 5px;
+        cursor: pointer;
+        color: #999;
+        font-size: 0.8em;
+    }
+    .clear-filter:hover {
+        color: #333;
+    }
 </style>
+
+{% block extra_js %}
+<!-- Cargar jQuery (asegurarse de que solo se cargue una vez) -->
+{% if not 'jquery' in block.super %}
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+{% endif %}
+
+<!-- Cargar DataTables y sus extensiones -->
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/2.2.2/css/buttons.dataTables.min.css">
+<script type="text/javascript" src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/buttons/2.2.2/js/dataTables.buttons.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/buttons/2.2.2/js/buttons.html5.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+
+<script>
+    $(document).ready(function() {
+        console.log('Inicializando DataTable...');
+        
+        try {
+            // Inicializar DataTable
+            var table = $('#transaccionesTable').DataTable({
+                order: [[0, 'desc']],  // Ordenar por fecha de creación descendente por defecto
+                pageLength: 25,  // Mostrar 25 elementos por página
+                lengthMenu: [[10, 25, 50, 100, -1], [10, 25, 50, 100, 'Todos']],  // Opciones de cantidad de elementos
+                columnDefs: [
+                    { type: 'date-eu', targets: 0 }  // Especificar que la primera columna es una fecha
+                ],
+                dom: 'Bfrtip',
+                buttons: [
+                    'copy', 'csv', 'excel', 'pdf', 'print'
+                ],
+                language: {
+                    // Configuración en español
+                    "decimal": ",",
+                    "thousands": ".",
+                    "lengthMenu": "Mostrar _MENU_ registros por página",
+                    "zeroRecords": "No se encontraron resultados",
+                    "info": "Mostrando _START_ a _END_ de _TOTAL_ registros",
+                    "infoEmpty": "Mostrando 0 a 0 de 0 registros",
+                    "infoFiltered": "(filtrado de _MAX_ registros en total)",
+                    "search": "Buscar:",
+                    "paginate": {
+                        "first":      "Primero",
+                        "last":       "Último",
+                        "next":       "Siguiente",
+                        "previous":   "Anterior"
+                    },
+                    "buttons": {
+                        "copy": "Copiar",
+                        "copyTitle": "Copiado al portapapeles",
+                        "copySuccess": {
+                            "1": "1 fila copiada al portapapeles",
+                            "_": "%d filas copiadas al portapapeles"
+                        },
+                        "print": "Imprimir",
+                        "pageLength": {
+                            "-1": "Mostrar todas las filas",
+                            "_": "Mostrar %d filas"
+                        }
+                    }
+                },
+                responsive: true,
+                initComplete: function() {
+                    console.log('DataTable inicializado correctamente');
+                    
+                    // Agregar filtros a cada columna
+                    this.api().columns().every(function() {
+                        var column = this;
+                        var title = $(column.header()).text().trim();
+                        
+                        // Saltar la columna de Acciones
+                        if (title !== 'Acciones') {
+                            // Crear contenedor para el filtro
+                            var filterContainer = $('<div class="filter-header"></div>');
+                            
+                            // Agregar input de filtro
+                            var input = $('<input type="text" class="filter-input" placeholder="Filtrar ' + title + '" />')
+                                .on('keyup change', function() {
+                                    if (column.search() !== this.value) {
+                                        column.search(this.value).draw();
+                                    }
+                                });
+                            
+                            // Agregar botón de limpiar
+                            var clearBtn = $('<span class="clear-filter" title="Limpiar filtro">×</span>')
+                                .on('click', function() {
+                                    input.val('').trigger('change');
+                                });
+                            
+                            // Construir el filtro
+                            filterContainer
+                                .append(clearBtn)
+                                .append(input);
+                                
+                            // Agregar el filtro al encabezado
+                            $(column.header())
+                                .html('')
+                                .append($('<div>').text(title).css('margin-bottom', '5px'))
+                                .append(filterContainer);
+                        }
+                    });
+                    
+                    // Agregar botón para limpiar todos los filtros
+                    var clearButton = $('<button class="dt-button buttons-clear-filters" tabindex="0" type="button"><span>Limpiar Filtros</span></button>')
+                        .on('click', function() {
+                            // Limpiar búsqueda global
+                            table.search('').draw();
+                            
+                            // Limpiar todos los filtros de columna
+                            table.columns().every(function() {
+                                // Obtener el input del filtro de esta columna
+                                var input = $(this.header()).find('.filter-input');
+                                if (input.length) {
+                                    input.val('');
+                                }
+                            });
+                            
+                            // Limpiar búsqueda en todas las columnas
+                            table.columns().search('').draw();
+                            
+                            // Forzar redibujado
+                            table.columns.adjust().draw();
+                        });
+                    
+                    // Agregar el botón al DOM
+                    $('.dt-buttons').append(clearButton);
+                },
+                error: function(xhr, error, thrown) {
+                    console.error('Error al inicializar DataTable:', error);
+                }
+            });
+            
+            // Ajustar el ancho de los filtros después de cargar
+            table.columns.adjust();
+            
+        } catch (error) {
+            console.error('Error en el script de DataTable:', error);
+        }
+    });
+</script>
+{% endblock %}
 {% endblock %}

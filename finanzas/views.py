@@ -7,6 +7,7 @@ from calendar import monthrange
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
+from django.utils.dateparse import parse_datetime
 
 @login_required
 def dashboard(request):
@@ -15,7 +16,10 @@ def dashboard(request):
     primer_dia_mes = mes_actual
     ultimo_dia_mes = mes_actual.replace(day=monthrange(mes_actual.year, mes_actual.month)[1])
 
-    transacciones_mes = Transaccion.objects.filter(mes=mes_actual).order_by('-fecha')
+    # Obtener transacciones ordenadas por fecha de creación
+    transacciones_mes = Transaccion.objects.filter(mes=mes_actual).order_by('fecha_creacion')
+    
+    # Calcular totales
     entradas = transacciones_mes.filter(tipo='entrada').aggregate(Sum('monto'))['monto__sum'] or 0
     salidas = transacciones_mes.filter(tipo='salida').aggregate(Sum('monto'))['monto__sum'] or 0
     saldo_actual = entradas - salidas
@@ -23,22 +27,27 @@ def dashboard(request):
     # Obtener el saldo del mes anterior (si existe)
     mes_anterior = (mes_actual - timezone.timedelta(days=1)).replace(day=1)
     try:
-        ultima_transaccion_mes_anterior = Transaccion.objects.filter(mes=mes_anterior).latest('fecha')
-        saldo_anterior = ultima_transaccion_mes_anterior.saldo_acumulado if hasattr(ultima_transaccion_mes_anterior, 'saldo_acumulado') else 0
+        ultima_transaccion_mes_anterior = Transaccion.objects.filter(mes=mes_anterior).latest('fecha_creacion')
+        saldo_anterior = ultima_transaccion_mes_anterior.saldo_acumulado
     except Transaccion.DoesNotExist:
         saldo_anterior = 0
 
     saldo_total = saldo_anterior + saldo_actual
-
-    # Actualizar el saldo acumulado para las transacciones del mes actual
+    
+    # Recalcular saldos acumulados para el mes actual
     saldo_acumulado = saldo_anterior
     for transaccion in transacciones_mes:
         if transaccion.tipo == 'entrada':
             saldo_acumulado += transaccion.monto
         else:
             saldo_acumulado -= transaccion.monto
-        transaccion.saldo_acumulado = saldo_acumulado
-        transaccion.save()
+        # Actualizar solo si el saldo ha cambiado
+        if transaccion.saldo_acumulado != saldo_acumulado:
+            transaccion.saldo_acumulado = saldo_acumulado
+            transaccion.save(update_fields=['saldo_acumulado'])
+    
+    # Reordenar por fecha descendente para la vista
+    transacciones_mes = transacciones_mes.order_by('-fecha_creacion')
 
     context = {
         'transacciones': transacciones_mes,
@@ -57,11 +66,17 @@ def agregar_transaccion(request):
         form = TransaccionForm(request.POST)
         if form.is_valid():
             transaccion = form.save(commit=False)
+            # Asegurarse de que la fecha tenga la zona horaria correcta
+            if not timezone.is_aware(transaccion.fecha):
+                transaccion.fecha = timezone.make_aware(transaccion.fecha)
             transaccion.mes = transaccion.fecha.replace(day=1)
             transaccion.save()
+            messages.success(request, 'Transacción agregada correctamente.')
             return redirect('finanzas:dashboard')
     else:
-        form = TransaccionForm()
+        # Establecer la fecha y hora actual como valor por defecto
+        initial_data = {'fecha': timezone.localtime().strftime('%Y-%m-%dT%H:%M')}
+        form = TransaccionForm(initial=initial_data)
     return render(request, 'finanzas/agregar_transaccion.html', {'form': form})
 
 @login_required
@@ -71,8 +86,12 @@ def editar_transaccion(request, pk):
         form = TransaccionForm(request.POST, instance=transaccion)
         if form.is_valid():
             transaccion = form.save(commit=False)
+            # Asegurarse de que la fecha tenga la zona horaria correcta
+            if not timezone.is_aware(transaccion.fecha):
+                transaccion.fecha = timezone.make_aware(transaccion.fecha)
             transaccion.mes = transaccion.fecha.replace(day=1)
             transaccion.save()
+            messages.success(request, 'Transacción actualizada correctamente.')
             return redirect('finanzas:dashboard')
     else:
         form = TransaccionForm(instance=transaccion)

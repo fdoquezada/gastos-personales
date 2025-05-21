@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8 text-center">
+            <div class="error-page">
+                <h1 class="display-1">404</h1>
+                <p class="lead">Página no encontrada</p>
+                <p>Lo sentimos, la página que estás buscando no existe.</p>
+                <div class="mt-4">
+                    <a href="{% url 'home' %}" class="btn btn-primary">Volver a la Página Principal</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
